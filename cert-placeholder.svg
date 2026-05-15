@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="350" viewBox="0 0 500 350">
+  <rect width="500" height="350" fill="#F8FAFC" />
+  <rect x="50" y="40" width="400" height="270" rx="24" fill="#CBD5E1" stroke="#64748B" stroke-width="8" />
+  <line x1="90" y1="100" x2="410" y2="100" stroke="#1E293B" stroke-width="6" />
+  <line x1="90" y1="150" x2="410" y2="150" stroke="#334155" stroke-width="4" />
+  <line x1="90" y1="190" x2="410" y2="190" stroke="#334155" stroke-width="4" />
+  <text x="250" y="240" font-family="Arial, sans-serif" font-size="28" fill="#0F172A" text-anchor="middle">Certificate</text>
+  <text x="250" y="280" font-family="Arial, sans-serif" font-size="18" fill="#334155" text-anchor="middle">Preview Image</text>
+</svg>

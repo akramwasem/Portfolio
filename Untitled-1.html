@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wasem Mohamed | Cloud & Full-Stack Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-primary: #daddf2;
+      --bg-surface: #ffffff;
+      --text-primary: #4b4b7a;
+      --text-secondary: #64748b;
+      --border-light: #e2e8f0;
+      --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.08);
+      --accent: #7975c7;
+      --accent-light: #f0f0ff;
+      --accent-text: #615cc1;
+      --timeline-line: #6c63ff;
+      --skill-bg: #ffffff;
+    }
+
+    body.dark {
+      --bg-primary: #0f0f1a;
+      --bg-surface: #1a1a2e;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border-light: #2d2d44;
+      --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
+      --accent: #7975c7;
+      --accent-light: #2d2d44;
+      --accent-text: #a5a3ff;
+      --skill-bg: #1e1e36;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: background 0.3s ease, color 0.2s ease;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Sora', sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(var(--bg-surface-rgb), 0.95);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--border-light);
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.3s;
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Dark mode toggle */
+    .dark-mode-toggle {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-light);
+      border-radius: 40px;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      color: var(--text-primary);
+    }
+
+    .dark-mode-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* HERO SECTION - Like Craftivo style */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 60px;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--accent-light) 100%);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text .name {
+      color: var(--accent);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-text .name::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--accent);
+      opacity: 0.2;
+      border-radius: 4px;
+    }
+
+    .hero-tagline {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .role-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      line-height: 1.8;
+      max-width: 90%;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-item p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-image {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 8px solid white;
+      box-shadow: var(--card-shadow);
+      background: var(--accent-light);
+    }
+
+    .hero-image .badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* SECTION */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* ABOUT SECTION */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .about-info {
+      background: var(--bg-surface);
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
+    }
+
+    .info-item {
+      display: flex;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-weight: 700;
+      width: 120px;
+      color: var(--accent);
+    }
+
+    .info-value {
+      color: var(--text-secondary);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 25px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg-primary);
+    }
+
+    .date {
+      background: var(--accent-light);
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: #0f172a;
+      padding: 80px 0;
+    }
+
+    #projects .section-title {
+      color: #ffffff;
+    }
+
+    #projects .section-title::after {
+      background: #7c3aed;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(230px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 28px;
+      padding: 32px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 20px;
+      box-shadow: 0 24px 60px rgba(5, 14, 40, 0.35);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      color: #ffffff;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(124, 58, 237, 0.45);
+      box-shadow: 0 32px 80px rgba(5, 14, 40, 0.45);
+    }
+
+    .project-card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.35rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .project-card.project-blue .project-card-icon {
+      background: #172554;
+    }
+
+    .project-card.project-purple .project-card-icon {
+      background: #4c1d95;
+    }
+
+    .project-card.project-green .project-card-icon {
+      background: #064e3b;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin: 0;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .project-description {
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0;
+      max-width: 95%;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+      width: fit-content;
+    }
+
+    .project-btn:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .project-highlight-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      font-weight: 700;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .skill-card {
+      background: var(--bg-surface);
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(108, 99, 255, 0.25);
+    }
+
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .skill-card-header i {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+
+    .skill-card-header h3 {
+      font-size: 1.4rem;
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    .skill-description {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .skill-tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .skill-tag:nth-child(odd) {
+      background: rgba(108, 99, 255, 0.12);
+    }
+
+    .skill-tag:nth-child(even) {
+      background: rgba(108, 99, 255, 0.08);
+    }
+
+    /* CERTIFICATIONS */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .cert-card {
+      background: var(--bg-surface);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      transition: 0.3s;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .cert-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .cert-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .cert-issuer {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .cert-date {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+
+    .cert-image-hidden {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .cert-image-hidden img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .cert-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .cert-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-details {
+      margin: 30px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-item i {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--accent);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px 18px;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: 0.3s;
+      color: var(--accent);
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      .hero-description {
+        max-width: 100%;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-image img {
+        width: 280px;
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">Mohamed Wasem Akram </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <button class="dark-mode-toggle" id="darkModeToggle">
+          <i class="fas fa-moon"></i> <span>Dark</span>
+        </button>
+        <a href="resume.pdf" class="btn-outline" download>
+          <i class="fas fa-download"></i> Resume
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION - Craftivo Style -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="role-badge">🚀 Available for Work</div>
+          <h1>
+            Hi, I'm <span class="name">Mohamed Wasem Akram</span><br>
+            I'm a <span style="color: var(--accent);">Cloud Engineer!</span>
+          </h1>
+          <div class="hero-tagline">Building scalable cloud solutions & modern web apps</div>
+          <div class="hero-description">
+            Passionate about cloud infrastructure, backend systems, and full-stack development. 
+            Focused on building reliable and user-friendly products with modern technologies.
+          </div>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn">Hire Me <i class="fas fa-arrow-right"></i></a>
+            <a href="#projects" class="btn-outline">View Projects <i class="fas fa-code"></i></a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>1+</h3>
+              <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+              <h3>10+</h3>
+              <p>Projects</p>
+            </div>
+            <div class="stat-item">
+              <h3>4+</h3>
+              <p>Certifications</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="C:\Users\vigne\Downloads\WhatsApp Image 2026-05-15 at 2.57.40 PM.jpeg" alt="Mohamed Wasem Akram">
+          <div class="badge">
+            <i class="fas fa-cloud"></i> AWS Certified
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Hi there! I'm Mohamed Wasem Akram, a passionate cloud engineer and full-stack developer based in Chennai, India. My journey in technology began during my college years, where I discovered my love for building scalable systems.</p>
+            <p>Currently pursuing my B.Tech in Information Technology at Aalim Muhammed Salegh College, I've gained hands-on experience through my internship at iStudio Technologies, where I work with AWS cloud infrastructure, deployment automation, and monitoring solutions.</p>
+            <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+          </div>
+          <div class="about-info">
+            <div class="info-item">
+              <div class="info-label">Name</div>
+              <div class="info-value">Mohamed Wasem Akram</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Location</div>
+              <div class="info-value">Chennai, India</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Email</div>
+              <div class="info-value">mohamewasem2004@gmail.com</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Experience</div>
+              <div class="info-value">1+Years</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Availability</div>
+              <div class="info-value">Open for Opportunities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section id="timeline">
+      <div class="container">
+        <h2 class="section-title">Education & Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="date">2025 - Present</div>
+            <h3>AWS Cloud Intern — iStudio Technologies</h3>
+            <p>Working on EC2 deployment, S3 hosting, monitoring, and cloud infrastructure optimization.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="date">2022 – 2026</div>
+            <h3>B.Tech IT — Aalim Muhammed Salegh College</h3>
+            <p>Specialized in cloud computing, web technologies, DBMS, and backend development.</p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card project-blue">
+            <div class="project-card-icon"><i class="fas fa-plane"></i></div>
+            <span class="project-highlight-tag">Flight Management</span>
+            <h3 class="project-title">Flight Management</h3>
+            <p class="project-description">A sleek aviation operations hub for managing bookings, schedules, and crew logistics.</p>
+            <button class="project-btn">View Project</button>
+          </div>
+          <div class="project-card project-purple">
+            <div class="project-card-icon"><i class="fas fa-robot"></i></div>
+            <span class="project-highlight-tag">AI Runtime</span>
+            <h3 class="project-title">AI Runtime</h3>
+            <p class="project-description">A modern inference platform for running AI workloads locally with fast performance.</p>
+            <button class="project-btn">View Project</button>
+          </div>
+          <div class="project-card project-green">
+            <div class="project-card-icon"><i class="fas fa-cloud"></i></div>
+            <span class="project-highlight-tag">Cloud Monitor</span>
+            <h3 class="project-title">Cloud Monitor</h3>
+            <p class="project-description">A real-time cloud dashboard for observability, alerts, and infrastructure health.</p>
+            <button class="project-btn">View Project</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications">
+      <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certs-grid">
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fab fa-aws"></i></div>
+            <h3>AWS Certified Cloud Practitioner</h3>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <div class="cert-date">Issued: Jan 2025 · ID: AWS-CCP-98231</div>
+            <div class="cert-image-hidden">
+              <img src="Screenshot 2026-05-14 224919.png" alt="AWS Certificate">
+            </div>
+            <button class="cert-btn">📄 View Certificate</button>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+            <h3>Microsoft Azure Fundamentals</h3>
+            <div class="cert-issuer">Microsoft</div>
+            <div class="cert-date">Issued: Nov 2024 · ID: AZ900-4521A</div>
+            <div class="cert-image-hidden">
+              <img src="https://via.placeholder.com/400x300/00BCF2/ffffff?text=Azure+Certificate" alt="Azure Certificate">
+            </div>
+            <button class="cert-btn">📄 View Certificate</button>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon"><i class="fab fa-free-code-camp"></i></div>
+            <h3>Full-Stack Web Development</h3>
+            <div class="cert-issuer">freeCodeCamp</div>
+            <div class="cert-date">Issued: Mar 2025</div>
+            <div class="cert-image-hidden">
+              <img src="https://via.placeholder.com/400x300/0A0A23/ffffff?text=freeCodeCamp" alt="freeCodeCamp">
+            </div>
+            <button class="cert-btn">📄 View Certificate</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i class="fas fa-code"></i>
+              <h3>Languages & Frameworks</h3>
+            </div>
+            <p class="skill-description">Building responsive web applications with modern languages and libraries.</p>
+            <div class="skill-items">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">React.js</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">FastAPI</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i class="fas fa-database"></i>
+              <h3>Databases & Cloud</h3>
+            </div>
+            <p class="skill-description">Managing databases and cloud infrastructure for secure, scalable deployments.</p>
+            <div class="skill-items">
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">AWS EC2</span>
+              <span class="skill-tag">AWS S3</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Kubernetes</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i class="fas fa-lightbulb"></i>
+              <h3>Soft Skills</h3>
+            </div>
+            <p class="skill-description">Creative problem solving and strong communication for cloud project delivery.</p>
+            <div class="skill-items">
+              <span class="skill-tag">Critical Thinking</span>
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">Managing Cloud Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Have a project in mind?</h3>
+            <p>I'm currently available for freelance work, internships, or full-time opportunities. Let's build something amazing together!</p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Chennai, India</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>mohamewasem2004@gmail.com</span>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div>
+            <form class="contact-form" id="contactForm">
+              <input type="text" placeholder="Your Name" id="contactName" required>
+              <input type="email" placeholder="Your Email" id="contactEmail" required>
+              <textarea rows="5" placeholder="Your Message" id="contactMsg" required></textarea>
+              <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Wasem Mohamed — Cloud Engineer & Full-Stack Developer. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Dark Mode
+    (function() {
+      const toggleBtn = document.getElementById('darkModeToggle');
+      const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+      
+      if (isDarkMode) {
+        document.body.classList.add('dark');
+        updateToggleIcon(true);
+      } else {
+        document.body.classList.remove('dark');
+        updateToggleIcon(false);
+      }
+      
+      function updateToggleIcon(isDark) {
+        if (toggleBtn) {
+          if (isDark) {
+            toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light</span>';
+          } else {
+            toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark</span>';
+          }
+        }
+      }
+      
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const darkCurrently = document.body.classList.contains('dark');
+          if (darkCurrently) {
+            document.body.classList.remove('dark');
+            localStorage.setItem('darkMode', 'disabled');
+            updateToggleIcon(false);
+          } else {
+            document.body.classList.add('dark');
+            localStorage.setItem('darkMode', 'enabled');
+            updateToggleIcon(true);
+          }
+        });
+      }
+    })();
+
+    // Certificate Button
+    const certBtns = document.querySelectorAll('.cert-btn');
+    certBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const hiddenImg = this.previousElementSibling;
+        if (hiddenImg.style.display === 'none' || hiddenImg.style.display === '') {
+          hiddenImg.style.display = 'block';
+          this.innerHTML = '🙈 Hide Certificate';
+        } else {
+          hiddenImg.style.display = 'none';
+          this.innerHTML = '📄 View Certificate';
+        }
+      });
+    });
+
+    // Contact Form
+    document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      alert(`✨ Thanks ${name}! I'll get back to you soon.`);
+      this.reset();
+    });
+  </script>
+</body>
+</html>

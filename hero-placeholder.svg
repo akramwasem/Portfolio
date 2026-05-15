@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <rect width="500" height="500" fill="#E0E7FF" />
+  <circle cx="250" cy="200" r="120" fill="#A5B4FC" />
+  <rect x="150" y="320" width="200" height="100" rx="20" fill="#6366F1" />
+  <text x="250" y="265" font-family="Arial, sans-serif" font-size="32" fill="#1E3A8A" text-anchor="middle">Profile</text>
+  <text x="250" y="295" font-family="Arial, sans-serif" font-size="24" fill="#1E40AF" text-anchor="middle">Image</text>
+</svg>
